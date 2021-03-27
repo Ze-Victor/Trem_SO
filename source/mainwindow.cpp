@@ -85,55 +85,65 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_sliderTrem1_sliderMoved(int position)
 {
+ /*
     if(position>=100){
         position = 200-position;
     }
     else {
         position +=200;
     }
+ */
      trem1->setVelocidade(position);
 }
 
 void MainWindow::on_sliderTrem2_sliderMoved(int position)
 {
+ /*
     if(position>=100){
         position = 200-position;
     }
     else {
         position +=200;
     }
+ */
     trem2->setVelocidade(position);
 }
 
 void MainWindow::on_sliderTrem3_sliderMoved(int position)
 {
-    if(position>=100){
-        position = 200-position;
-    }
-    else {
-        position +=200;
-    }
+    /*
+       if(position>=100){
+           position = 200-position;
+       }
+       else {
+           position +=200;
+       }
+    */
     trem3->setVelocidade(position);
 }
 
 void MainWindow::on_sliderTrem4_sliderMoved(int position)
 {
-    if(position>=100){
-        position = 200-position;
-    }
-    else {
-        position +=200;
-    }
+    /*
+       if(position>=100){
+           position = 200-position;
+       }
+       else {
+           position +=200;
+       }
+    */
     trem4->setVelocidade(position);
 }
 
 void MainWindow::on_sliderTrem5_sliderMoved(int position)
 {
-    if(position>=100){
-        position = 200-position;
-    }
-    else {
-        position +=200;
-    }
+    /*
+       if(position>=100){
+           position = 200-position;
+       }
+       else {
+           position +=200;
+       }
+    */
     trem5->setVelocidade(position);
 }
