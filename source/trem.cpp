@@ -17,33 +17,41 @@ Trem::Trem(int ID, int x, int y){
     this->x = x;
     this->y = y;
     velocidade = 100;
+    this->rc = -1;
+}
+
+void Trem::setRC(int rc){
+    if(this->rc==rc)return;
+    Trem::regiaoCritica[rc] = this->ID;
+    if(this->rc!=-1)Trem::regiaoCritica[this->rc] = 0;
+    this->rc = rc;
 }
 
 void Trem::checarRegiao(){
-    for(int i=0;i<7;++i){
-        if(Trem::regiaoCritica[i]==this->ID)
-            Trem::regiaoCritica[i]=0;
-    }
     if(this->x == 230 && this->y < 150){
-        Trem::regiaoCritica[RC1] = this->ID;
+        this->setRC(RC1);
     }
     else if(this->x == 400 && this->y < 150){
-        Trem::regiaoCritica[RC2] = this->ID;
+        this->setRC(RC2);
     }
     else if(this->x < 230 && this->y == 150){
-        Trem::regiaoCritica[RC3] = this->ID;
+        this->setRC(RC3);
     }
     else if(this->x < 320 && this->y == 150){
-        Trem::regiaoCritica[RC4] = this->ID;
+        this->setRC(RC4);
     }
     else if(this->x < 400 && this->y == 150){
-        Trem::regiaoCritica[RC5] = this->ID;
+        this->setRC(RC5);
     }
     else if(this->x < 490 && this->y == 150){
-        Trem::regiaoCritica[RC6] = this->ID;
+        this->setRC(RC6);
     }
     else if(this->x == 320 && this->y<280){
-        Trem::regiaoCritica[RC7] = this->ID;
+        this->setRC(RC1);
+    }
+    else{
+        Trem::regiaoCritica[this->rc] = 0;
+        this->rc=-1;
     }
 
 }
