@@ -34,28 +34,28 @@ MainWindow::MainWindow(QWidget *parent) :
 
 //Função que será executada quando o sinal UPDATEGUI for emitido
 void MainWindow::updateInterface(int id, int x, int y){
-    std::string text = "rc1: " + std::to_string(Trem::regiaoCritica[0]) + "\n rc2: " + std::to_string(Trem::regiaoCritica[1]) + "\n rc3: " + std::to_string(Trem::regiaoCritica[2]) + "\n rc4: "
-+ std::to_string(Trem::regiaoCritica[3]) + "\n rc5: " + std::to_string(Trem::regiaoCritica[4]) + "\n rc6: " + std::to_string(Trem::regiaoCritica[5]) + "\n rc7: " + std::to_string(Trem::regiaoCritica[6]);
+    //std::string text = "rc1: " + std::to_string(Trem::regiaoCritica[0]) + "\n rc2: " + std::to_string(Trem::regiaoCritica[1]) + "\n rc3: " + std::to_string(Trem::regiaoCritica[2]) + "\n rc4: "
+//+ std::to_string(Trem::regiaoCritica[3]) + "\n rc5: " + std::to_string(Trem::regiaoCritica[4]) + "\n rc6: " + std::to_string(Trem::regiaoCritica[5]) + "\n rc7: " + std::to_string(Trem::regiaoCritica[6]);
     switch(id){
     case 1: //Atualiza a posição do objeto da tela (quadrado) que representa o trem1
-        ui->label_trem1->setGeometry(x,y,30,25);
+        ui->label_trem1->setGeometry(x,y,8,8);
         break;
     case 2: //Atualiza a posição do objeto da tela (quadrado) que representa o trem2
-        ui->label_trem2->setGeometry(x,y,30,25);
+        ui->label_trem2->setGeometry(x,y,8,8);
         break;
     case 3: //Atualiza a posição do objeto da tela (quadrado) que representa o trem3
-        ui->label_trem3->setGeometry(x,y,30,25);
+        ui->label_trem3->setGeometry(x,y,8,8);
         break;
     case 4: //Atualiza a posição do objeto da tela (quadrado) que representa o trem4
-        ui->label_trem4->setGeometry(x,y,30,25);
+        ui->label_trem4->setGeometry(x,y,8,8);
         break;
     case 5: //Atualiza a posição do objeto da tela (quadrado) que representa o trem4
-        ui->label_trem5->setGeometry(x,y,30,25);
+        ui->label_trem5->setGeometry(x,y,8,8);
         break;
     default:
         break;
     }
-    ui->textEdit->setPlainText(QString::fromStdString(text));
+    //ui->textEdit->setPlainText(QString::fromStdString(text));
 }
 
 MainWindow::~MainWindow()

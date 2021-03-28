@@ -47,7 +47,7 @@ void Trem::checarRegiao(){
         this->setRC(RC6);
     }
     else if(this->x == 320 && this->y<280){
-        this->setRC(RC1);
+        this->setRC(RC7);
     }
     else{
         Trem::regiaoCritica[this->rc] = 0;
@@ -67,10 +67,14 @@ void Trem::run(){
         if(velocidade==200)continue;
         switch(ID){
             case 1:     //Trem 1
-                if (y == 20 && x <230)
+                if (y == 20 && x <230){
+                    if(x >= 220 && Trem::regiaoCritica[RC1]!=0 && Trem::regiaoCritica[RC1]!=this->ID)continue;
                     x+=10;
-                else if (x == 230 && y < 150)
+                }
+                else if (x == 230 && y < 150){
+                    if(y >= 140 && Trem::regiaoCritica[RC3]!=0 && Trem::regiaoCritica[RC3]!=this->ID)continue;
                     y+=10;
+                }
                 else if (x > 60 && y == 150)
                     x-=10;
                 else
@@ -78,14 +82,22 @@ void Trem::run(){
                 emit updateGUI(ID, x,y);    //Emite um sinal
                 break;
             case 2: //Trem 2
-                if (y == 20 && x <400)
+                if (y == 20 && x <400){
+                    if(x >= 390 && Trem::regiaoCritica[RC2]!=0 && Trem::regiaoCritica[RC2]!=this->ID)continue;
                     x+=10;
-                else if (x == 400 && y < 150)
+                }
+                else if (x == 400 && y < 150){
+                    if(y >= 140 && Trem::regiaoCritica[RC5]!=0 && Trem::regiaoCritica[RC5]!=this->ID)continue;
                     y+=10;
-                else if (x > 230 && y == 150)
+                }
+                else if (x > 230 && y == 150){
+                    if(x <= 410 && Trem::regiaoCritica[RC4]!=0 && Trem::regiaoCritica[RC4]!=this->ID)continue;
+                    if(x <= 240 && Trem::regiaoCritica[RC1]!=0 && Trem::regiaoCritica[RC1]!=this->ID)continue;
                     x-=10;
-                else
+                }
+                else{
                     y-=10;
+                }
                 emit updateGUI(ID, x,y);    //Emite um sinal
                 break;
              case 3: //Trem 3
@@ -93,32 +105,46 @@ void Trem::run(){
                     x+=10;
                 else if (x == 570 && y < 150)
                     y+=10;
-                else if (x > 400 && y == 150)
+                else if (x > 400 && y == 150){
+                    if(x <= 500 && Trem::regiaoCritica[RC6]!=0 && Trem::regiaoCritica[RC6]!=this->ID)continue;
+                    if(x <= 410 && Trem::regiaoCritica[RC2]!=0 && Trem::regiaoCritica[RC2]!=this->ID)continue;
                     x-=10;
+                }
                 else
                     y-=10;
                 emit updateGUI(ID, x,y);    //Emite um sinal
                 break;
             case 4: //Trem 4
-                if (y == 150 && x <320)
+                if (y == 150 && x <320){
+                    if(x <= 220 && Trem::regiaoCritica[RC4]!=0 && Trem::regiaoCritica[RC4]!=this->ID)continue;
+                    if(x <= 310 && Trem::regiaoCritica[RC7]!=0 && Trem::regiaoCritica[RC7]!=this->ID)continue;
                     x+=10;
+                }
                 else if (x == 320 && y < 280)
                     y+=10;
                 else if (x > 150 && y == 280)
                     x-=10;
-                else
+                else{
+                    if(y <= 160 && Trem::regiaoCritica[RC3]!=0 && Trem::regiaoCritica[RC3]!=this->ID)continue;
                     y-=10;
+                }
                 emit updateGUI(ID, x,y);    //Emite um sinal
                 break;
             case 5: //Trem 5
-                if (y == 150 && x <490)
+                if (y == 150 && x <490){
+                    if(x >= 380 && Trem::regiaoCritica[RC6]!=0 && Trem::regiaoCritica[RC6]!=this->ID)continue;
                     x+=10;
+                }
                 else if (x == 490 && y < 280)
                     y+=10;
-                else if (x > 320 && y == 280)
+                else if (x > 320 && y == 280){
+                    if(x <= 330 && Trem::regiaoCritica[RC7]!=0 && Trem::regiaoCritica[RC7]!=this->ID)continue;
                     x-=10;
-                else
+                }
+                else{
+                    if(y <= 160 && Trem::regiaoCritica[RC5]!=0 && Trem::regiaoCritica[RC5]!=this->ID)continue;
                     y-=10;
+                }
                 emit updateGUI(ID, x,y);    //Emite um sinal
                 break;
             default:
