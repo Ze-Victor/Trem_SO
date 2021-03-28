@@ -68,7 +68,7 @@ void Trem::run(){
         switch(ID){
             case 1:     //Trem 1
                 if (y == 20 && x <230){
-                    if(x >= 220 && Trem::regiaoCritica[RC1]!=0 && Trem::regiaoCritica[RC1]!=this->ID)continue;
+                    if(x >= 220 && (Trem::regiaoCritica[RC1]!=0 || Trem::regiaoCritica[RC3]!=0 || Trem::regiaoCritica[RC4]!=0) && Trem::regiaoCritica[RC1]!=this->ID)continue;
                     x+=10;
                 }
                 else if (x == 230 && y < 150){
@@ -106,7 +106,7 @@ void Trem::run(){
                 else if (x == 570 && y < 150)
                     y+=10;
                 else if (x > 400 && y == 150){
-                    if(x <= 500 && Trem::regiaoCritica[RC6]!=0 && Trem::regiaoCritica[RC6]!=this->ID)continue;
+                    if(x <= 500 && (Trem::regiaoCritica[RC6]!=0 || Trem::regiaoCritica[RC2]!=0 || Trem::regiaoCritica[RC5]!=0) && Trem::regiaoCritica[RC6]!=this->ID)continue;
                     if(x <= 410 && Trem::regiaoCritica[RC2]!=0 && Trem::regiaoCritica[RC2]!=this->ID)continue;
                     x-=10;
                 }
@@ -125,7 +125,7 @@ void Trem::run(){
                 else if (x > 150 && y == 280)
                     x-=10;
                 else{
-                    if(y <= 160 && Trem::regiaoCritica[RC3]!=0 && Trem::regiaoCritica[RC3]!=this->ID)continue;
+                    if(y <= 160 && (Trem::regiaoCritica[RC3]!=0 || Trem::regiaoCritica[RC4]!=0 || Trem::regiaoCritica[RC1]!=0) && Trem::regiaoCritica[RC3]!=this->ID)continue;
                     y-=10;
                 }
                 emit updateGUI(ID, x,y);    //Emite um sinal
@@ -138,7 +138,7 @@ void Trem::run(){
                 else if (x == 490 && y < 280)
                     y+=10;
                 else if (x > 320 && y == 280){
-                    if(x <= 330 && Trem::regiaoCritica[RC7]!=0 && Trem::regiaoCritica[RC7]!=this->ID)continue;
+                    if(x <= 330 && (Trem::regiaoCritica[RC7]!=0 || Trem::regiaoCritica[RC4]!=0 || Trem::regiaoCritica[RC5]!=0) && Trem::regiaoCritica[RC7]!=this->ID)continue;
                     x-=10;
                 }
                 else{
