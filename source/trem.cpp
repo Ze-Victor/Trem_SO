@@ -1,12 +1,53 @@
 #include "trem.h"
 #include <QtCore>
 
+#define RC1 0
+#define RC2 1
+#define RC3 2
+#define RC4 3
+#define RC5 4
+#define RC6 5
+#define RC7 6
+
+int Trem::regiaoCritica[7]{0};
+
 //Construtor
 Trem::Trem(int ID, int x, int y){
     this->ID = ID;
     this->x = x;
     this->y = y;
     velocidade = 100;
+}
+
+void Trem::checarRegiao(){
+    if(this->x == 230 && this->y < 150){
+        Trem::regiaoCritica[RC1] = this->ID;
+    }
+    else if(this->x == 400 && this->y < 150){
+        Trem::regiaoCritica[RC2] = this->ID;
+    }
+    else if(this->x < 230 && this->y == 150){
+        Trem::regiaoCritica[RC3] = this->ID;
+    }
+    else if(this->x < 320 && this->y == 150){
+        Trem::regiaoCritica[RC4] = this->ID;
+    }
+    else if(this->x < 400 && this->y == 150){
+        Trem::regiaoCritica[RC5] = this->ID;
+    }
+    else if(this->x < 490 && this->y == 150){
+        Trem::regiaoCritica[RC6] = this->ID;
+    }
+    else if(this->x == 320 && this->y<280){
+        Trem::regiaoCritica[RC7] = this->ID;
+    }
+    else{
+        for(int i=0; i<7; ++i){
+            if(Trem::regiaoCritica[i] == this->ID){
+                Trem::regiaoCritica[i] = 0;
+            }
+        }
+    }
 }
 
 void Trem::setVelocidade(int posicao){
@@ -16,6 +57,7 @@ void Trem::setVelocidade(int posicao){
 //Função a ser executada após executar trem->START
 void Trem::run(){
     while(true){
+        checarRegiao();
         if(velocidade==200)continue;
         switch(ID){
             case 1:     //Trem 1

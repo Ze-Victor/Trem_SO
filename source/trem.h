@@ -13,9 +13,12 @@
 class Trem: public QThread{
  Q_OBJECT
 public:
+    static int regiaoCritica[7];
+
     Trem(int,int,int);  //construtor
     void run();         //função a ser executada pela thread
     void setVelocidade(int velocidade);
+    void checarRegiao();
 
 //Cria um sinal
 signals:
