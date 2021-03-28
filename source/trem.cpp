@@ -20,6 +20,10 @@ Trem::Trem(int ID, int x, int y){
 }
 
 void Trem::checarRegiao(){
+    for(int i=0;i<7;++i){
+        if(Trem::regiaoCritica[i]==this->ID)
+            Trem::regiaoCritica[i]=0;
+    }
     if(this->x == 230 && this->y < 150){
         Trem::regiaoCritica[RC1] = this->ID;
     }
@@ -41,13 +45,7 @@ void Trem::checarRegiao(){
     else if(this->x == 320 && this->y<280){
         Trem::regiaoCritica[RC7] = this->ID;
     }
-    else{
-        for(int i=0; i<7; ++i){
-            if(Trem::regiaoCritica[i] == this->ID){
-                Trem::regiaoCritica[i] = 0;
-            }
-        }
-    }
+
 }
 
 void Trem::setVelocidade(int posicao){
