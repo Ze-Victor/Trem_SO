@@ -112,10 +112,10 @@ void Trem::run(){
                 break;
             case 5: //Trem 5
                 if (y == 150 && x <490){
-                    if(x == 330)Trem::regiaoCritica[RC7].unlock();
                     if(x == 380)Trem::regiaoCritica[RC6].lock();
-                    if(x == 410)Trem::regiaoCritica[RC5].unlock();
                     x+=10;
+                    if(x == 330)Trem::regiaoCritica[RC7].unlock();
+                    if(x == 410)Trem::regiaoCritica[RC5].unlock();
                 }
                 else if (x == 490 && y < 280){
                     y+=10;
