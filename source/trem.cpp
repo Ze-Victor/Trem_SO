@@ -59,8 +59,7 @@ void Trem::run(){
                     y+=10;
                 }
                 else if (x > 230 && y == 150){
-
-                    if(x == 410)Trem::regiaoCritica[RC4].lock();
+                    if(x == 330)Trem::regiaoCritica[RC4].lock();
                     if(x == 240)Trem::regiaoCritica[RC1].lock();
                     x-=10;
                     if(x == 390)Trem::regiaoCritica[RC2].unlock();
@@ -68,6 +67,7 @@ void Trem::run(){
                 }
                 else{
                     y-=10;
+                    if(y == 140)Trem::regiaoCritica[RC4].unlock();
                 }
                 emit updateGUI(ID, x,y);    //Emite um sinal
                 break;
@@ -92,9 +92,9 @@ void Trem::run(){
             case 4: //Trem 4
                 if (y == 150 && x <320){
                     if(x == 220)Trem::regiaoCritica[RC4].lock();
-                    if(x == 240)Trem::regiaoCritica[RC3].unlock();
                     if(x == 310)Trem::regiaoCritica[RC7].lock();
                     x+=10;
+                    if(x == 240)Trem::regiaoCritica[RC3].unlock();
                 }
                 else if (x == 320 && y < 280){
                     y+=10;
