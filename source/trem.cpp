@@ -24,6 +24,26 @@ void Trem::setVelocidade(int posicao){
     this->velocidade =  200 - posicao;
 }
 
+void Trem::getRedPath(){
+    bool rc2, rc5, rc4, rc1;
+    while(true){
+        rc2=false; rc5=false; rc4=false; rc1=false;
+        rc2 = Trem::regiaoCritica[RC2].try_lock();
+        rc5 = Trem::regiaoCritica[RC5].try_lock();
+        rc4 = Trem::regiaoCritica[RC4].try_lock();
+        rc1 = Trem::regiaoCritica[RC1].try_lock();
+        if (rc2 && rc5 && rc4 && rc1){
+            break;
+        }
+        else{
+            if(rc2)Trem::regiaoCritica[RC2].unlock();
+            if(rc5)Trem::regiaoCritica[RC5].unlock();
+            if(rc4)Trem::regiaoCritica[RC4].unlock();
+            if(rc1)Trem::regiaoCritica[RC1].unlock();
+        }
+    }
+}
+
 //Função a ser executada após executar trem->START
 void Trem::run(){
     while(true){
@@ -50,17 +70,14 @@ void Trem::run(){
                 break;
             case 2: //Trem 2
                 if (y == 20 && x <400){
-                    if(x == 390)Trem::regiaoCritica[RC2].lock();
+                    if(x == 390)this->getRedPath();
                     x+=10;
                     if(x == 240)Trem::regiaoCritica[RC1].unlock();
                 }
                 else if (x == 400 && y < 150){
-                    if(y == 140)Trem::regiaoCritica[RC5].lock();
                     y+=10;
                 }
                 else if (x > 230 && y == 150){
-                    if(x == 330)Trem::regiaoCritica[RC4].lock();
-                    if(x == 240)Trem::regiaoCritica[RC1].lock();
                     x-=10;
                     if(x == 390)Trem::regiaoCritica[RC2].unlock();
                     if(x == 310)Trem::regiaoCritica[RC5].unlock();
