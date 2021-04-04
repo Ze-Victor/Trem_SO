@@ -2,6 +2,7 @@
 #define TREM_H
 
 #include <QThread>
+#include <QMutex>
 
 /*
  * Classe Trem herda QThread
@@ -13,14 +14,12 @@
 class Trem: public QThread{
  Q_OBJECT
 public:
-    static int regiaoCritica[7];
+    static QMutex regiaoCritica[7];
     int rc;
 
     Trem(int,int,int);  //construtor
     void run();         //função a ser executada pela thread
     void setVelocidade(int velocidade);
-    void checarRegiao();
-    void setRC(int rc);
 
 //Cria um sinal
 signals:
